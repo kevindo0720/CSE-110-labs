@@ -1,27 +1,132 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        .bg-color {
+            background-color: rgb(245, 240, 230);
+            display: inline-block; 
+            width: 100%;           
+            margin: 0;
+        }
+
+        .bg-image {
+            background-image: url('background1.png');
+            background-size: cover;
+            display: inline-block; 
+            width: 100%;           
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-color, .bg-image {
+            font-size: 28px; 
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            font-size: 28px; 
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            padding: 14px 16px;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        /* hover */
+        li a:hover {
+            background-color: #182b49; 
+            color: white; 
+        }
+
+        .mainSection {
+            padding-top: 20px;
+        }
+
+        /* Limit logo size */
+        img#logo {
+            max-width: 400px;
+            height: auto; 
+        }
+
+ 
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid-item {
+            background-color: #182b49;
+            color: white;
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: scroll; 
+        }
+
+    </style>
+</head>
 <body>
 
-<div sectionMain> 
-    <img src="ucsdlogo.png" alt="UCSD logo">
-    <a href = "#section1">Section 1</a>
-    <a href = "#section2">Section 2</a>
+<img id="logo" src="ucsdlogo.png" alt="UCSD logo">
 
+<ul> 
+    <li><a href="#section1">Section 1</a></li>
+    <li><a href="#section2">Section 2</a></li>
+    <li><a href="#section3">Section 3</a></li>
+</ul>
 
+<div class="mainSection">
+    <div id="section1" class="bg-color"> 
+        <h2>Section 1</h2>
+        <img src="ucsd-athletics-logo.svg" alt="triton logo">
+        <p>This is the Triton Logo. I am a Triton, proud to be a Triton. ROAR!</p>
+    </div>
+    <div id="section2" class="bg-image"> 
+        <h2>Section 2</h2>
+        <img src="logos-college-logos-07-23.svg" alt="colleges logo">
+        <p>Here are the logos of the different colleges at UCSD. I am a part of Revelle, but not proud to be a Revellian.</p>
+    </div>
+
+    <div id="section3" class="bg-color">
+        <h2>Section 3</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <p>Computer Science Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science </p>
+            </div>
+            <div class="grid-item">
+                <p>Computer Science Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science.</p>
+            </div>
+            <div class="grid-item">
+                <p>Computer Science Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science</p>
+            </div>
+            <div class="grid-item">
+                <p>Computer Science Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science.</p>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div id = "section1"> 
-    <h2>Section 1</h2>
-    <img src="ucsd-athletics-logo.svg" alt="triton logo">
-    <p>This is the triton Logo. I am a triton, proud to be a trion ROAR! </p>
-</div>
-
-<div id = "section2"> 
-    <h2>Section 2</h2>
-    <img src="logos-college-logos-07-23.svg" alt="colleges logo">
-</div>
-
-
 
 </body>
 </html>
