@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UCSD Page</title>
+
     <style>
         .bg-color {
             background-color: rgb(245, 240, 230);
@@ -23,7 +27,7 @@
         }
 
         .bg-color, .bg-image {
-            font-size: 28px; 
+            font-size: 28px;
         }
 
         ul {
@@ -31,11 +35,11 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: white; 
+            background-color: white;
             position: sticky;
             top: 0;
             z-index: 1000;
-            font-size: 28px; 
+            font-size: 28px;
         }
 
         li {
@@ -48,29 +52,31 @@
             color: black;
             text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* hover */
         li a:hover {
-            background-color: #182b49; 
-            color: white; 
+            background-color: #182b49;
+            color: white;
         }
 
         .mainSection {
             padding-top: 20px;
         }
 
-        /* Limit logo size */
-        img#logo {
-            max-width: 400px;
-            height: auto; 
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
- 
+        img#logo {
+            max-width: 400px;
+            height: auto;
+        }
+
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
             max-width: 100%;
             margin: 0 auto;
@@ -85,6 +91,27 @@
             overflow-y: scroll; 
         }
 
+        /* media queries*/
+        @media (max-width: 800px) {
+            ul {
+                display: none; 
+
+            img#logo {
+                max-width: 75%; 
+            }
+
+            .bg-color, .bg-image {
+                font-size: 24px; 
+            }
+
+            p {
+                font-size: 20px; 
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
     </style>
 </head>
 <body>
@@ -127,6 +154,5 @@
         </div>
     </div>
 </div>
-
 </body>
-</html>
+</html> 
