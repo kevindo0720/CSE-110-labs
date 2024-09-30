@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UCSD Page</title>
+    <script src="function.js"></script>
 
     <style>
         .bg-color {
@@ -127,6 +128,7 @@
     <li><a href="#section1">Section 1</a></li>
     <li><a href="#section2">Section 2</a></li>
     <li><a href="#section3">Section 3</a></li>
+    <li><a href="#section4">Subscribe</a></li>
 </ul>
 
 <div class="mainSection">
@@ -160,12 +162,11 @@
     </div>
 
     <div id="section4" class="bg-form">
-        <h2>Section 4 - Subscribe to our newsletters!</h2>
-        <form action="https://www.w3schools.com/action_page.php">
-            <label for="email" style="display: inline-block; width: 100px;">Enter email:</label>
-            <input type="email" id="email" name="email" required>
-            <input type="submit" value="Submit">
-            <br><br>
+        <h2>Subscribe to our newsletters!</h2>
+        <form id="subscribe-form">
+            <label for="subscribe-input">Enter your email:</label>
+            <input type="text" name="subscribe" />
+            <button type="submit">Submit</button>
         </form>
     </div>    
 </div>
