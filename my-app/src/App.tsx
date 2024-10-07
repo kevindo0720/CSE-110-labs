@@ -3,6 +3,7 @@ import { Label, Note } from "./type"; // Import the Label type from the appropri
 import { dummyNotesList } from "./constant"; // Import the dummyNotesList from the appropriate module
 import './hooksExercise';
 function App() {
+  
  return (
   
    <div className='app-container'>
@@ -20,6 +21,7 @@ function App() {
            key={note.id}
            className="note-item">
            <div className="notes-header">
+             <button>{'♡'}</button>
              <button>x</button>
            </div>
            <h2> {note.title} </h2>
@@ -28,7 +30,6 @@ function App() {
          </div>
        ))}
      </div>
-
    </div>
 
  );
