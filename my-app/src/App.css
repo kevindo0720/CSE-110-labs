@@ -73,12 +73,12 @@
   gap: 20px;
  }
  
- textarea,
  input {
-  border-radius: 5px;
+  border-radius: 7px;
   border: 1px solid black;
   padding: 10px;
   font-size: 16px;
+  height: 50px;
  }
  
  .note-form button {
