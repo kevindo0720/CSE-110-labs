@@ -66,9 +66,8 @@ function App() {
   
     console.log(notes)
  return (
-    <div>
-   <div className='app-container' data-theme = {isDark ? "dark" : "light"}>
-    <ToggleTheme/>
+    <div className='app-container' data-theme = {isDark ? "dark" : "light"}>
+    <ToggleTheme/>  
      <form className="note-form" onSubmit={handleSubmit}>
         <div>
           <input
@@ -129,7 +128,7 @@ function App() {
         </ul>
      </div>
    </div>
-   </div>
+
  );
 }
 
