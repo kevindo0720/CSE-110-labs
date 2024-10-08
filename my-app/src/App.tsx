@@ -1,8 +1,10 @@
 import './App.css';
 import { Label, Note } from "./type"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constant"; // Import the dummyNotesList from the appropriate module
-import './hooksExercise';
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
+import ToggleTheme from './hooksExercise';
+import { ThemeContext, themes } from './themeContext'; // Import the ThemeContext and themes
+
 function App() {
 
   const [filledHearts, setFilledHearts] = useState<{ [key: number]: boolean }>({});
@@ -11,9 +13,8 @@ function App() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [label, setLabel] = useState<Label>(Label.personal);
-
-
-  
+  const currentTheme = useContext(ThemeContext); 
+  const [isDark, setIsDark] = useState(false);
 
   const toggleHeart = (id: number) => {
     setFilledHearts(prevState => {
@@ -65,10 +66,10 @@ function App() {
   
     console.log(notes)
  return (
-  
-   <div className='app-container'>
+    <div>
+   <div className='app-container' data-theme = {isDark ? "dark" : "light"}>
+    <ToggleTheme/>
      <form className="note-form" onSubmit={handleSubmit}>
-        <button> HookExercise Button </button>
         <div>
           <input
             placeholder="Note Title"
@@ -127,11 +128,13 @@ function App() {
           })}
         </ul>
      </div>
-
    </div>
-
+   </div>
  );
 }
 
 export default App;
 
+function getTheme(lightTheme: boolean) {
+  throw new Error('Function not implemented.');
+}
