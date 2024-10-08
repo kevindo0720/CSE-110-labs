@@ -1,8 +1,8 @@
 import './App.css';
-import { Label, Note } from "./type"; // Import the Label type from the appropriate module
-import { dummyNotesList } from "./constant"; // Import the dummyNotesList from the appropriate module
+import { Label, Note } from "./type";
+import { dummyNotesList } from "./constant";
 import React, { useState } from 'react';
-import ToggleTheme from './hooksExercise'; // Import the ToggleTheme component
+import ToggleTheme from './hooksExercise';
 import { ThemeContext, themes } from './themeContext';
 
 function App() {
@@ -13,12 +13,14 @@ function App() {
   const [content, setContent] = useState('');
   const [label, setLabel] = useState<Label>(Label.personal);
   const [currentTheme, setCurrentTheme] = useState(themes.light);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null); // Track the note being edited
 
   const value = {
     theme: currentTheme,
     setTheme: setCurrentTheme,
   };
 
+  // Function to toggle the heart for favorite notes
   const toggleHeart = (id: number) => {
     setFilledHearts(prevState => {
       const newState = {
@@ -39,11 +41,13 @@ function App() {
     });
   };
 
+  // Function to remove a note
   const removeNote = (id: number) => {
     setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
     setFavorites(prevFavorites => prevFavorites.filter(favId => favId !== id));
   };
 
+  // Function to handle note creation
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const newNote: Note = {
@@ -56,6 +60,13 @@ function App() {
     setTitle('');
     setContent('');
     setLabel(Label.personal);
+  };
+
+  // Function to handle updating a note
+  const handleUpdateNote = (id: number, updatedNote: Partial<Note>) => {
+    setNotes(prevNotes =>
+      prevNotes.map(note => (note.id === id ? { ...note, ...updatedNote } : note))
+    );
   };
 
   return (
@@ -106,18 +117,54 @@ function App() {
             </div>
           </form>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}> {/* Flex container for notes */}
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {notes.map((note) => (
-              <div key={note.id} className="note-item" style={{ marginRight: '10px', marginBottom: '10px' }}>
+              <div
+                key={note.id}
+                className="note-item"
+                style={{ marginRight: '10px', marginBottom: '10px', border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}
+              >
                 <div className="notes-header">
                   <button onClick={() => toggleHeart(note.id)}>
                     {filledHearts[note.id] ? '❤️' : '♡'}
                   </button>
                   <button onClick={() => removeNote(note.id)}>x</button>
                 </div>
-                <h2>{note.title}</h2>
-                <p>{note.content}</p>
-                <p>{note.label}</p>
+
+                {/* Editable Title */}
+                <h2
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) =>
+                    handleUpdateNote(note.id, { title: e.currentTarget.textContent || '' })
+                  }
+                >
+                  {note.title}
+                </h2>
+
+                {/* Editable Content */}
+                <p
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) =>
+                    handleUpdateNote(note.id, { content: e.currentTarget.textContent || '' })
+                  }
+                >
+                  {note.content}
+                </p>
+
+                {/* Editable Label */}
+                <select
+                  value={note.label}
+                  onChange={(e) =>
+                    handleUpdateNote(note.id, { label: e.target.value as Label })
+                  }
+                >
+                  <option value={Label.personal}>Personal</option>
+                  <option value={Label.work}>Work</option>
+                  <option value={Label.study}>Study</option>
+                  <option value={Label.other}>Other</option>
+                </select>
               </div>
             ))}
           </div>
