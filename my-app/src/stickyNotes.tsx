@@ -42,8 +42,14 @@ const StickyNotes = () => {
 
   // Function to remove a note
   const removeNote = (id: number) => {
-    setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
-    setFavorites(prevFavorites => prevFavorites.filter(favId => favId !== id));
+          setNotes(prevNotes => {
+      const updatedNotes = prevNotes.filter(note => note.id !== id);
+      return updatedNotes;
+    });
+    setFavorites(prevFavorites => {
+      const updatedFavorites = prevFavorites.filter(favId => favId !== id);
+      return updatedFavorites;
+    });
   };
 
   // Function to handle note creation
@@ -117,6 +123,7 @@ const StickyNotes = () => {
           </form>
 
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            
             {notes.map((note) => (
               <div
                 key={note.id}
@@ -127,11 +134,13 @@ const StickyNotes = () => {
                   <button onClick={() => toggleHeart(note.id)}>
                     {filledHearts[note.id] ? '❤️' : '♡'}
                   </button>
-                  <button onClick={() => removeNote(note.id)}>x</button>
+                  <button data-testid={`delete-button-${note.id}`} onClick={() => removeNote(note.id)}>x</button>                 
                 </div>
+                
 
                 {/* Editable Title */}
                 <h2
+                  data-testid={`edit-title-${note.id}`}
                   contentEditable
                   suppressContentEditableWarning
                   onBlur={(e) =>
@@ -143,6 +152,7 @@ const StickyNotes = () => {
 
                 {/* Editable Content */}
                 <p
+                  data-testid={`edit-content-${note.id}`}
                   contentEditable
                   suppressContentEditableWarning
                   onBlur={(e) =>
@@ -154,6 +164,7 @@ const StickyNotes = () => {
 
                 {/* Editable Label */}
                 <select
+                  data-testid={`edit-label-${note.id}`}
                   value={note.label}
                   onChange={(e) =>
                     handleUpdateNote(note.id, { label: e.target.value as Label })

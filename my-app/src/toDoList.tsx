@@ -32,6 +32,10 @@ export function ToDoList() {
    const diff = checkbox.checked ? 1 : -1;
 
    setNumRemainingItems(numRemainingItems + diff);
+   console.log(numRemainingItems + diff);
+   console.log(itemName);
+
+
  }
 
  return (
