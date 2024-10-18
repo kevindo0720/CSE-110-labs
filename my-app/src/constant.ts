@@ -1,4 +1,9 @@
 import { Label } from "./type"
+export const dummyGroceryList = [
+    { name: "Apples", isPurchased: false },
+    { name: "Bananas", isPurchased: false },
+ ]
+ 
 export const dummyNotesList = [
     {
         id: 1,
